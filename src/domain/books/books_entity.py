@@ -5,6 +5,7 @@ from src.domain.books.object_values.co_author_value import CoAuthorValue
 from src.domain.books.object_values.included_at_value import IncludedAtValue
 from src.domain.books.object_values.isbn_value import ISBNValue
 from src.domain.books.object_values.shelf_value import ShelfValue
+from src.domain.books.object_values.updated_at_value import UpdatedAtValue
 
 
 class BooksEntity:
@@ -31,7 +32,9 @@ class BooksEntity:
         self.__included_at = IncludedAtValue(
             included_at=request.get('included_at')
         ).value()
-        self.__updated_at
+        self.__updated_at = UpdatedAtValue(
+            updated_at=request.get('updated_at')
+        ).value()
 
     def get_isbn(self) -> str:
         return self.__isbn
