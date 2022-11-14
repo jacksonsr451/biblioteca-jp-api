@@ -1,6 +1,6 @@
 import pytest
-from src.domain.books.errors.shelf_error import ShelfError
 
+from src.domain.books.errors.shelf_error import ShelfError
 from src.domain.books.object_values.shelf_value import ShelfValue
 
 

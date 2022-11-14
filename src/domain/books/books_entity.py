@@ -2,6 +2,7 @@ from src.domain.books.object_values.area_value import AreaValue
 from src.domain.books.object_values.author_value import AuthorValue
 from src.domain.books.object_values.book_name_value import BookNameValue
 from src.domain.books.object_values.co_author_value import CoAuthorValue
+from src.domain.books.object_values.included_at_value import IncludedAtValue
 from src.domain.books.object_values.isbn_value import ISBNValue
 from src.domain.books.object_values.shelf_value import ShelfValue
 
@@ -27,7 +28,9 @@ class BooksEntity:
         ).value()
         self.__area = AreaValue(area=request.get('area')).value()
         self.__shelf = ShelfValue(shelf=request.get('shelf')).value()
-        self.__included_at
+        self.__included_at = IncludedAtValue(
+            included_at=request.get('included_at')
+        ).value()
         self.__updated_at
 
     def get_isbn(self) -> str:
