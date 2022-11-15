@@ -1,6 +1,8 @@
 import pytest
 
-from src.application.interfaces.books_respository_interface import BooksRepositoryInterface
+from src.application.interfaces.books_respository_interface import (
+    BooksRepositoryInterface,
+)
 
 
 @pytest.fixture(scope='class')

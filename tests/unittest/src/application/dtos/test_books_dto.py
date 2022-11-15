@@ -1,8 +1,9 @@
 from datetime import date
+
 import pytest
 
-from src.domain.books.books_entity import BooksEntity
 from src.application.dtos.books_dto import BooksDTO
+from src.domain.books.books_entity import BooksEntity
 
 
 @pytest.fixture
@@ -16,8 +17,9 @@ def request_books_dto():
         'area': 'area',
         'shelf': 'shelf',
         'included_at': date.today().strftime('d%-M%-Y%'),
-        'updated_at': date.today().strftime('d%-M%-Y%')
+        'updated_at': date.today().strftime('d%-M%-Y%'),
     }
+
 
 @pytest.fixture
 def books_dto(request_books_dto):
@@ -40,6 +42,7 @@ def test_should_be_has_attributes(books_dto) -> None:
     assert getattr(books_dto, 'included_at')
     assert getattr(books_dto, 'updated_at')
 
+
 def test_should_be_return_types(books_dto) -> None:
     assert type(books_dto.isbn) is str
     assert type(books_dto.book_name) is str
@@ -51,9 +54,11 @@ def test_should_be_return_types(books_dto) -> None:
     assert type(books_dto.included_at) is str
     assert type(books_dto.updated_at) is str
 
+
 def test_should_be_has_methods(books_dto) -> None:
     assert getattr(books_dto, 'convert')
     assert getattr(books_dto, 'to_dict')
+
 
 def test_should_be_convert_and_compare_values(books_dto, books_entity) -> None:
     new_dto = BooksDTO.convert(entity=books_entity)
@@ -67,6 +72,7 @@ def test_should_be_convert_and_compare_values(books_dto, books_entity) -> None:
     assert new_dto.shelf.__eq__(books_dto.shelf)
     assert new_dto.included_at.__eq__(books_dto.included_at)
     assert new_dto.updated_at.__eq__(books_dto.updated_at)
+
 
 def test_should_be_return_dict(books_dto, request_books_dto) -> None:
     assert books_dto.to_dict().__eq__(request_books_dto)
