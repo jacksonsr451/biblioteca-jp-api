@@ -1,5 +1,4 @@
-from typing import Self
-
+from typing import Any
 from src.domain.books.books_entity import BooksEntity
 
 
@@ -26,7 +25,7 @@ class BooksDTO:
         self.updated_at = request.get('updated_at')
 
     @classmethod
-    def convert(cls, entity: BooksEntity) -> Self:
+    def convert(cls, entity: BooksEntity) -> Any:
         cls.isbn = entity.get_isbn()
         cls.book_name = entity.get_book_name()
         cls.author = entity.get_author()
