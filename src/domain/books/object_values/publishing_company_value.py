@@ -1,11 +1,15 @@
-from src.domain.books.errors.publishing_company_error import PublishingCompanyError
+from src.domain.books.errors.publishing_company_error import (
+    PublishingCompanyError,
+)
 
 
 class PublishingCompanyValue:
     __publishing_company: str
 
     def __init__(self, publishing_company: str = '') -> None:
-        self.__publishing_company = self.__validate(publishing_company=publishing_company)
+        self.__publishing_company = self.__validate(
+            publishing_company=publishing_company
+        )
 
     @classmethod
     def __validate(cls, publishing_company: str = '') -> str:
