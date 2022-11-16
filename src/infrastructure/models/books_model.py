@@ -1,6 +1,12 @@
+from lib2to3.pytree import Base
+
 from sqlalchemy import Column, String
 
-class BooksModelFactoring:
+from src.infrastructure.models.model import Model
+from src.infrastructure.services.sqlalchemy_service import Base
+
+
+class BooksModel(Base, Model):
     __tablename__ = 'books'
 
     isbn = Column(String(36), primary_key=True)

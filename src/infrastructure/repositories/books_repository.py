@@ -2,7 +2,7 @@ from src.application.dtos.books_dto import BooksDTO
 from src.application.interfaces.books_respository_interface import (
     BooksRepositoryInterface,
 )
-from src.infrastructure.models import BooksModel
+from src.infrastructure.models.books_model import BooksModel
 
 
 class BooksRepository(BooksRepositoryInterface):
@@ -25,4 +25,3 @@ class BooksRepository(BooksRepositoryInterface):
 
     def delete(self, isbn: str) -> None:
         return super().delete(isbn)
-        
