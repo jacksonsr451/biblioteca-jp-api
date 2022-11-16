@@ -31,7 +31,7 @@ class BooksRepository(BooksRepositoryInterface):
             .first()
         )
         if update_book:
-            update_book.author = book.author 
+            update_book.author = book.author
             update_book.co_author = book.co_author
             update_book.book_name = book.book_name
             update_book.area = book.area
