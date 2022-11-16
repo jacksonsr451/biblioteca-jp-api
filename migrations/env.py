@@ -1,8 +1,11 @@
+import os
 from logging.config import fileConfig
 
 from alembic import context
+from dotenv import load_dotenv
 from sqlalchemy import engine_from_config, pool
 
+load_dotenv()
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -36,7 +39,15 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option('sqlalchemy.url')
+    url = config.get_main_option(
+        'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
+            os.getenv('DB_USERNAME'),
+            os.getenv('DB_PASSWORD'),
+            os.getenv('DB_HOST'),
+            os.getenv('DB_PORT'),
+            os.getenv('DB_NAME'),
+        )
+    )
     context.configure(
         url=url,
         target_metadata=target_metadata,
