@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  biblioteca_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=biblioteca
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./biblioteca_db:/var/lib/postgresql/data
+
