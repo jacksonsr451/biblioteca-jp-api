@@ -15,15 +15,15 @@ class BooksDTO:
     updated_at: str
 
     def __init__(self, request) -> None:
-        self.isbn = request.get('isbn')
-        self.book_name = request.get('book_name')
-        self.author = request.get('author')
-        self.co_author = request.get('co_author')
-        self.publishing_company = request.get('publishing_company')
-        self.area = request.get('area')
-        self.shelf = request.get('shelf')
-        self.included_at = request.get('included_at')
-        self.updated_at = request.get('updated_at')
+        self.isbn = request.isbn
+        self.book_name = request.book_name
+        self.author = request.author
+        self.co_author = request.co_author
+        self.publishing_company = request.publishing_company
+        self.area = request.area
+        self.shelf = request.shelf
+        self.included_at = request.included_at
+        self.updated_at = request.updated_at
 
     @classmethod
     def convert(cls, entity: BooksEntity) -> Any:

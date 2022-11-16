@@ -8,17 +8,18 @@ from src.domain.books.books_entity import BooksEntity
 
 @pytest.fixture
 def request_books_dto():
-    return {
-        'isbn': '978-85-508-0460-6',
-        'book_name': 'book_name',
-        'author': 'author',
-        'co_author': [''],
-        'publishing_company': 'publishing_company',
-        'area': 'area',
-        'shelf': 'shelf',
-        'included_at': date.today().strftime('d%-M%-Y%'),
-        'updated_at': date.today().strftime('d%-M%-Y%'),
-    }
+    class TestBookRequest:
+        isbn = '978-85-508-0460-6'
+        book_name = 'book_name'
+        author = 'author'
+        co_author = ['']
+        publishing_company = 'publishing_company'
+        area = 'area'
+        shelf = 'shelf'
+        included_at = date.today().strftime('d%-M%-Y%')
+        updated_at = date.today().strftime('d%-M%-Y%')
+
+    return TestBookRequest
 
 
 @pytest.fixture
@@ -28,7 +29,17 @@ def books_dto(request_books_dto):
 
 @pytest.fixture
 def books_entity(request_books_dto):
-    return BooksEntity(request=request_books_dto)
+    return BooksEntity(request={
+        'isbn': '978-85-508-0460-6',
+        'book_name': 'book_name',
+        'author': 'author',
+        'co_author': [''],
+        'publishing_company': 'publishing_company',
+        'area': 'area',
+        'shelf': 'shelf',
+        'included_at': date.today().strftime('d%-M%-Y%'),
+        'updated_at': date.today().strftime('d%-M%-Y%'),
+    })
 
 
 def test_should_be_has_attributes(books_dto) -> None:
@@ -74,5 +85,15 @@ def test_should_be_convert_and_compare_values(books_dto, books_entity) -> None:
     assert new_dto.updated_at.__eq__(books_dto.updated_at)
 
 
-def test_should_be_return_dict(books_dto, request_books_dto) -> None:
-    assert books_dto.to_dict().__eq__(request_books_dto)
+def test_should_be_return_dict(books_dto) -> None:
+    assert books_dto.to_dict().__eq__({
+        'isbn': '978-85-508-0460-6',
+        'book_name': 'book_name',
+        'author': 'author',
+        'co_author': [''],
+        'publishing_company': 'publishing_company',
+        'area': 'area',
+        'shelf': 'shelf',
+        'included_at': date.today().strftime('d%-M%-Y%'),
+        'updated_at': date.today().strftime('d%-M%-Y%'),
+    })
