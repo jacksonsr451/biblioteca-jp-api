@@ -23,10 +23,7 @@ def test_should_be_has_methods(create_books) -> None:
 
 def test_should_be_return_type(create_books) -> None:
     create_book = BooksDTO.convert(BooksEntity(request=TestBookRequest()))
-    assert (
-        type(create_books.create(BooksDTO(request=create_book)))
-        is NoneType
-    )
+    assert type(create_books.create(BooksDTO(request=create_book))) is NoneType
 
 
 class TestBookRequest:

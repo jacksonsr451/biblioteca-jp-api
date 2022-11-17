@@ -60,9 +60,5 @@ def test_should_be_return_values(books_entity, books_request) -> None:
     )
     assert books_entity.get_area().__eq__(books_request.area)
     assert books_entity.get_shelf().__eq__(books_request.shelf)
-    assert books_entity.get_included_at().__eq__(
-        books_request.included_at
-    )
-    assert books_entity.get_updated_at().__eq__(
-        books_request.updated_at
-    )
+    assert books_entity.get_included_at().__eq__(books_request.included_at)
+    assert books_entity.get_updated_at().__eq__(books_request.updated_at)

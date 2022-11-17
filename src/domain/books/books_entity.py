@@ -25,13 +25,9 @@ class BooksEntity:
 
     def __init__(self, request: BooksDTO) -> None:
         self.__isbn = ISBNValue(isbn=request.isbn).value()
-        self.__book_name = BookNameValue(
-            book_name=request.book_name
-        ).value()
+        self.__book_name = BookNameValue(book_name=request.book_name).value()
         self.__author = AuthorValue(author=request.author).value()
-        self.__co_author = CoAuthorValue(
-            co_author=request.co_author
-        ).value()
+        self.__co_author = CoAuthorValue(co_author=request.co_author).value()
         self.__publishing_company = PublishingCompanyValue(
             publishing_company=request.publishing_company
         ).value()
