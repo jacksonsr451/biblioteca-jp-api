@@ -29,19 +29,7 @@ def books_dto(request_books_dto):
 
 @pytest.fixture
 def books_entity(request_books_dto):
-    return BooksEntity(
-        request={
-            'isbn': '978-85-508-0460-6',
-            'book_name': 'book_name',
-            'author': 'author',
-            'co_author': [''],
-            'publishing_company': 'publishing_company',
-            'area': 'area',
-            'shelf': 'shelf',
-            'included_at': date.today().strftime('d%-M%-Y%'),
-            'updated_at': date.today().strftime('d%-M%-Y%'),
-        }
-    )
+    return BooksEntity(request=request_books_dto)
 
 
 def test_should_be_has_attributes(books_dto) -> None:

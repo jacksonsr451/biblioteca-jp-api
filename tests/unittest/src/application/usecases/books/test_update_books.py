@@ -6,9 +6,11 @@ import pytest
 
 from src.application.dtos.books_dto import BooksDTO
 from src.application.usecases.books.update_books import UpdateBooks
+from src.domain.books.books_entity import BooksEntity
 from tests.unittest.src.application.usecases.books.book_repository_mock import (
     TestBookReposisotoryMock,
 )
+from src.application.dtos.books_dto import BooksDTO
 
 
 @pytest.fixture(scope='class')
@@ -21,8 +23,9 @@ def test_should_be_has_methods(update_books) -> None:
 
 
 def test_should_be_return_type(update_books) -> None:
+    update_book = BooksDTO.convert(BooksEntity(request=TestBookRequest()))
     assert (
-        type(update_books.update(BooksDTO(request=TestBookRequest())))
+        type(update_books.update(BooksDTO(request=update_book)))
         is NoneType
     )
 

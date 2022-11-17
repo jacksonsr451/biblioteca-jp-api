@@ -1,3 +1,4 @@
+from src.domain.books.dtos.books_dto import BooksDTO
 from src.domain.books.object_values.area_value import AreaValue
 from src.domain.books.object_values.author_value import AuthorValue
 from src.domain.books.object_values.book_name_value import BookNameValue
@@ -22,25 +23,25 @@ class BooksEntity:
     __included_at: str
     __updated_at: str
 
-    def __init__(self, request) -> None:
-        self.__isbn = ISBNValue(isbn=request.get('isbn')).value()
+    def __init__(self, request: BooksDTO) -> None:
+        self.__isbn = ISBNValue(isbn=request.isbn).value()
         self.__book_name = BookNameValue(
-            book_name=request.get('book_name')
+            book_name=request.book_name
         ).value()
-        self.__author = AuthorValue(author=request.get('author')).value()
+        self.__author = AuthorValue(author=request.author).value()
         self.__co_author = CoAuthorValue(
-            co_author=request.get('co_author')
+            co_author=request.co_author
         ).value()
         self.__publishing_company = PublishingCompanyValue(
-            publishing_company=request.get('publishing_company')
+            publishing_company=request.publishing_company
         ).value()
-        self.__area = AreaValue(area=request.get('area')).value()
-        self.__shelf = ShelfValue(shelf=request.get('shelf')).value()
+        self.__area = AreaValue(area=request.area).value()
+        self.__shelf = ShelfValue(shelf=request.shelf).value()
         self.__included_at = IncludedAtValue(
-            included_at=request.get('included_at')
+            included_at=request.included_at
         ).value()
         self.__updated_at = UpdatedAtValue(
-            updated_at=request.get('updated_at')
+            updated_at=request.updated_at
         ).value()
 
     def get_isbn(self) -> str:

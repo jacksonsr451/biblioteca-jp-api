@@ -16,8 +16,8 @@ class BooksRepository(BooksRepositoryInterface):
             list_books.append(BooksDTO(book))
         return list_books
 
-    def view(self, string: str) -> BooksDTO:
-        book = self.session.query(BooksModel).filter_by(isbn=string)
+    def view(self, isbn: str) -> BooksDTO:
+        book = self.session.query(BooksModel).filter_by(isbn=isbn)
         return BooksDTO(book)
 
     def create(self, book: BooksDTO) -> None:

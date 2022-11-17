@@ -9,7 +9,7 @@ class BooksRepositoryInterface(ABC):
         """This method is required!"""
 
     @abstractmethod
-    def view(self, string: str) -> BooksDTO:
+    def view(self, isbn: str) -> BooksDTO:
         """This method is required!"""
 
     @abstractmethod
