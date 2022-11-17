@@ -1,9 +1,10 @@
 from typing import Any
 
 from src.domain.books.books_entity import BooksEntity
+from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
 
 
-class BooksDTO:
+class BooksDTO(BooksDTOInterface):
     isbn: str
     book_name: str
     author: str

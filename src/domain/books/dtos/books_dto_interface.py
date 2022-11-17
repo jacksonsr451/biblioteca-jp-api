@@ -1,4 +1,7 @@
-class BooksDTO:
+from abc import ABC
+
+
+class BooksDTOInterface(ABC):
     isbn: str
     book_name: str
     author: str

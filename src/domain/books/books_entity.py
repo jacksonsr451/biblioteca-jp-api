@@ -1,4 +1,4 @@
-from src.domain.books.dtos.books_dto import BooksDTO
+from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
 from src.domain.books.object_values.area_value import AreaValue
 from src.domain.books.object_values.author_value import AuthorValue
 from src.domain.books.object_values.book_name_value import BookNameValue
@@ -23,7 +23,7 @@ class BooksEntity:
     __included_at: str
     __updated_at: str
 
-    def __init__(self, request: BooksDTO) -> None:
+    def __init__(self, request: BooksDTOInterface) -> None:
         self.__isbn = ISBNValue(isbn=request.isbn).value()
         self.__book_name = BookNameValue(book_name=request.book_name).value()
         self.__author = AuthorValue(author=request.author).value()

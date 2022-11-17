@@ -1,7 +1,6 @@
-from lib2to3.pytree import Base
-
 from sqlalchemy import Column, String
 
+from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
 from src.infrastructure.services.sqlalchemy_service import Base
 
 
@@ -18,16 +17,17 @@ class BooksModel(Base):
     included_at = Column(String(9), nullable=True)
     updated_at = Column(String(9), nullable=True)
 
-    def __init__(self, book={}) -> None:
-        self.isbn = book.get('isbn')
-        self.book_name = book.get('book_name')
-        self.author = book.get('author')
-        self.co_author = book.get('co_author')
-        self.publishing_company = book.get('publishing_company')
-        self.area = book.get('area')
-        self.shelf = book.get('shelf')
-        self.included_at = book.get('included_at')
-        self.updated_at = book.get('updated_at')
+    def __init__(self, book: BooksDTOInterface | None = None) -> None:
+        if book:
+            self.isbn = book.isbn
+            self.book_name = book.book_name
+            self.author = book.author
+            self.co_author = book.co_author
+            self.publishing_company = book.publishing_company
+            self.area = book.publishing_company
+            self.shelf = book.shelf
+            self.included_at = book.included_at
+            self.updated_at = book.updated_at
 
     def __repr__(self) -> str:
         return '<BooksModel(isbn={}, book_name={}, author={}, co_author={}, publishing_company={}, area={}, shelf={}, included_at={}, updated_at={})>'.format(
