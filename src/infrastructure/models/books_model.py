@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String
 
 from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
-from src.infrastructure.services.sqlalchemy_service import Base
+from src.infrastructure.models import Base
 
 
 class BooksModel(Base):

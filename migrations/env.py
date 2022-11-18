@@ -39,15 +39,8 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option(
-        'postgresql+psycopg2://{}:{}@{}:{}/{}'.format(
-            os.getenv('DB_USERNAME'),
-            os.getenv('DB_PASSWORD'),
-            os.getenv('DB_HOST'),
-            os.getenv('DB_PORT'),
-            os.getenv('DB_NAME'),
-        )
-    )
+    url = config.get_main_option("sqlalchemy.url")
+        
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -66,6 +59,19 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+    # config_section = config.get_section(config.config_ini_section)
+    # url = 'postgresql+{}://{}:{}@{}:{}/{}'.format(
+    #         os.getenv('DB_TYPE'),
+    #         os.getenv('DB_DRIVE'),
+    #         os.getenv('DB_USERNAME'),
+    #         os.getenv('DB_PASSWORD'),
+    #         os.getenv('DB_HOST'),
+    #         os.getenv('DB_PORT'),
+    #         os.getenv('DB_NAME'),
+    #     )
+    # if config_section and url:
+    #     config_section["sqlalchemy.url"] = url
+    
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),  # type: ignore
         prefix='sqlalchemy.',

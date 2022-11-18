@@ -1,5 +1,4 @@
 """Create books model
-
 Revision ID: c189300cb8b5
 Revises:
 Create Date: 2022-11-16 11:40:17.653037
