@@ -3,12 +3,11 @@ from src.application.interfaces.books_respository_interface import (
     BooksRepositoryInterface,
 )
 from src.infrastructure.models.books_model import BooksModel
-from src.infrastructure.services.connect import Connect
 
 
 class BooksRepository(BooksRepositoryInterface):
-    def __init__(self, connection: Connect) -> None:
-        self.session = connection.connect()
+    def __init__(self, session) -> None:
+        self.session = session
 
     def show(self) -> list[BooksDTO]:
         list_books: list[BooksDTO] = list()
@@ -17,7 +16,7 @@ class BooksRepository(BooksRepositoryInterface):
         return list_books
 
     def view(self, isbn: str) -> BooksDTO:
-        book = self.session.query(BooksModel).filter_by(isbn=isbn)
+        book = self.session.query(BooksModel).filter_by(isbn=isbn).first()
         return BooksDTO(book)
 
     def create(self, book: BooksDTO) -> None:
@@ -32,7 +31,7 @@ class BooksRepository(BooksRepositoryInterface):
         )
         if update_book:
             update_book.author = book.author
-            update_book.co_author = book.co_author
+            update_book.co_author = ', '.join(book.co_author)
             update_book.book_name = book.book_name
             update_book.area = book.area
             update_book.shelf = book.shelf

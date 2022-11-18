@@ -39,8 +39,8 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
-        
+    url = config.get_main_option('sqlalchemy.url')
+
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -71,7 +71,7 @@ def run_migrations_online() -> None:
     #     )
     # if config_section and url:
     #     config_section["sqlalchemy.url"] = url
-    
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),  # type: ignore
         prefix='sqlalchemy.',

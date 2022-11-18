@@ -3,7 +3,6 @@ from sqlalchemy import Column, String
 from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
 from src.infrastructure.models import Base
 
-
 class BooksModel(Base):
     __tablename__ = 'books'
 
@@ -22,7 +21,7 @@ class BooksModel(Base):
             self.isbn = book.isbn
             self.book_name = book.book_name
             self.author = book.author
-            self.co_author = book.co_author
+            self.co_author = ', '.join(book.co_author)
             self.publishing_company = book.publishing_company
             self.area = book.publishing_company
             self.shelf = book.shelf

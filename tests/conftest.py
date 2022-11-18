@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from src.infrastructure.services.sqlalchemy_service import Base
+from src.infrastructure.models import Base
 
 
 @pytest.fixture(scope='session')
