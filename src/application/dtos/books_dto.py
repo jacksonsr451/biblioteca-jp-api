@@ -1,4 +1,5 @@
 from typing import Any
+from src.application.interfaces.book_request_interface import BookRequestInterface
 
 from src.domain.books.books_entity import BooksEntity
 from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
@@ -15,7 +16,7 @@ class BooksDTO(BooksDTOInterface):
     included_at: str
     updated_at: str
 
-    def __init__(self, request) -> None:
+    def __init__(self, request: BookRequestInterface) -> None:
         self.isbn = request.isbn
         self.book_name = request.book_name
         self.author = request.author
