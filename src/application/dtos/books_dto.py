@@ -2,7 +2,7 @@ from typing import Any
 from src.application.interfaces.book_request_interface import BookRequestInterface
 
 from src.domain.books.books_entity import BooksEntity
-from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
+from src.domain.books.interfaces.books_dto_interface import BooksDTOInterface
 
 
 class BooksDTO(BooksDTOInterface):

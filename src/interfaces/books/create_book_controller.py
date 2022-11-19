@@ -1,13 +1,12 @@
 from src.application.dtos.books_dto import BooksDTO
 from src.application.interfaces.book_request_interface import BookRequestInterface
-from src.application.interfaces.books_respository_interface import BooksRepositoryInterface
-from src.application.usecases.books.create_books import CreateBooks
+from src.application.interfaces.books.create_books_interface import CreateBooksInterface
 
 
 class CreateBookController:
     
-    def __init__(self, controller: CreateBooks, repository: BooksRepositoryInterface) -> None:
-        self.controller = CreateBooks(repository=repository)
+    def __init__(self, controller: CreateBooksInterface) -> None:
+        self.controller = controller
 
     def execute(self, request: BookRequestInterface) -> None:
         try:

@@ -1,4 +1,4 @@
-from src.domain.books.dtos.books_dto_interface import BooksDTOInterface
+from src.domain.books.interfaces.books_dto_interface import BooksDTOInterface
 from src.domain.books.object_values.area_value import AreaValue
 from src.domain.books.object_values.author_value import AuthorValue
 from src.domain.books.object_values.book_name_value import BookNameValue

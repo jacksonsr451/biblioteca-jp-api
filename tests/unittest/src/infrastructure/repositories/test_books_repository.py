@@ -4,6 +4,7 @@ from types import NoneType
 import pytest
 
 from src.application.dtos.books_dto import BooksDTO
+from src.application.interfaces.book_request_interface import BookRequestInterface
 from src.infrastructure.repositories.books_repository import BooksRepository
 
 
@@ -14,7 +15,7 @@ def books_repository(session):
 
 @pytest.fixture
 def books_dto():
-    class TestBookRequest:
+    class TestBookRequest(BookRequestInterface):
         isbn = '978-85-508-0460-6'
         book_name = 'book_name'
         author = 'author'
